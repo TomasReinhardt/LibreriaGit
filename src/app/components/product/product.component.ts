@@ -58,7 +58,7 @@ export class ProductComponent implements OnInit {
 
   addTrolley(){
     var aux:any;
-    aux = localStorage.getItem('trolley');
+    aux = sessionStorage.getItem('trolley');
     this.trolley = JSON.parse(aux);
 
     var item: Item = {
@@ -81,7 +81,7 @@ export class ProductComponent implements OnInit {
         this.trolley.push(item)
       }
     }
-    localStorage.setItem('trolley',  JSON.stringify(this.trolley))
+    sessionStorage.setItem('trolley',  JSON.stringify(this.trolley))
   }
 
 }

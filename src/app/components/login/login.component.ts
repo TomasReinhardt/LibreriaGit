@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   checkUser(form:any){
     this._authService.singUp(this.username).subscribe(
       response => {
-        localStorage.setItem('token', response.token)
+        sessionStorage.setItem('token', response.token)
         this.access = true
         this.errorC = false;
         form.reset();

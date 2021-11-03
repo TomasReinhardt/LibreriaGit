@@ -18,7 +18,7 @@ export class TrolleyComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.aux = localStorage.getItem('trolley');
+    this.aux = sessionStorage.getItem('trolley');
     this.trolley = JSON.parse(this.aux);
 
     this.priceEnd();
@@ -50,7 +50,7 @@ export class TrolleyComponent implements OnInit {
   addCant(index:number){
     this.trolley[index].cant++
     this.priceEnd();
-    localStorage.setItem('trolley',  JSON.stringify(this.trolley));
+    sessionStorage.setItem('trolley',  JSON.stringify(this.trolley));
   }
   removeCant(index:number){
     this.trolley[index].cant--
@@ -58,12 +58,12 @@ export class TrolleyComponent implements OnInit {
     if(this.trolley[index].cant <= 0){
       this.removeItem(index);
     }else {
-      localStorage.setItem('trolley',  JSON.stringify(this.trolley));
+      sessionStorage.setItem('trolley',  JSON.stringify(this.trolley));
     }
   }
   removeItem(index:number){
     this.trolley.splice(index,1); 
     this.priceEnd();
-    localStorage.setItem('trolley',  JSON.stringify(this.trolley));
+    sessionStorage.setItem('trolley',  JSON.stringify(this.trolley));
   }
 }
