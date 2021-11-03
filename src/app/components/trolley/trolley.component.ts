@@ -35,7 +35,7 @@ export class TrolleyComponent implements OnInit {
       var aux = '-'+this.trolley[i].product.name+' -- x'+this.trolley[i].cant+' ==> '+this.trolley[i].product.price+'%0A'
       this.trolleyS += aux;
     }
-    this.trolleyS += '------------------------------------------%0AEl total del pedido es: $*'+this.total+'*'
+    this.trolleyS += '------------------------------------------%0AEl total del pedido es: $'+this.total
 
     window.open("https://api.whatsapp.com/send?phone=543492649194/&text="+this.trolleyS)
   }
