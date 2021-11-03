@@ -22,7 +22,7 @@ export class AppComponent {
     this.trolley = JSON.parse(aux);
   }
   ngOnInit() {
-    // alert("La funcion de subir y editar imagen no funciona debido a que el host gratuito que utilizo para montar la api no permite la carga de archivos. \n\nLas imagene fueron subidas mediando la api de forma local, para ver el codigo de subida de imagenes ingresar al repositorio: \n\nhttps://github.com/TomasReinhardt/api-rest-funkopop.git")
+    alert("La funcion de subir y editar imagen no funciona debido a que el host gratuito que utilizo para montar la api no permite la carga de archivos. \n\nLas imagene fueron subidas mediando la api de forma local, para ver el codigo de subida de imagenes ingresar al repositorio: \n\nhttps://github.com/TomasReinhardt/api-rest-funkopop.git")
     if(sessionStorage.getItem('trolley') == null){
       sessionStorage.setItem('trolley',  JSON.stringify(this.trolley));
     }else {
