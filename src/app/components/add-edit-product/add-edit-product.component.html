@@ -1,0 +1,50 @@
+<div class="conteiner-Product">
+    <form id="productForm" #productForm="ngForm" (ngSubmit)="saveProduct(productForm)">
+        <div class="info">
+            <div>
+                <label for="name">Nombre del Producto:</label>
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="product.name" required/><br>
+                <span *ngIf="name.touched && !name.valid">Campo Obligatorio</span>
+            </div>
+    
+            <div>
+                <label for="category">Categoria:</label>
+                <input type="text" name="category" #category="ngModel" [(ngModel)]="product.category" required/><br>
+                <span *ngIf="category.touched && !category.valid">Campo Obligatorio</span>
+            </div>
+    
+            <div>
+                <label for="marca">Marca:</label>
+                <input type="text" name="marca" #marca="ngModel" [(ngModel)]="product.marca"/><br>
+                <span *ngIf="category.touched && !category.valid">Campo Obligatorio</span>
+            </div>
+    
+            <div>
+                <label for="price">Precio:</label>
+                <input type="number" name="price" #price="ngModel" [(ngModel)]="product.price"/><br>
+                <span *ngIf="category.touched && !category.valid">Campo Obligatorio</span>
+            </div>
+    
+            <div>
+                <label for="stock">Stock:</label>
+                <input type="checkbox" name="stock" #stock="ngModel" [(ngModel)]="product.stock"/><br>
+            </div>
+    
+            <div>
+                <label for="discount">Descuento:</label>
+                <input type="text" name="discount" #discount="ngModel" [(ngModel)]="product.discount" required/><br>
+            </div>
+    
+            <div>
+                <label for="description">Descripción:</label>
+                <input type="text" name="description" #description="ngModel" [(ngModel)]="product.description" />
+            </div>
+            <div id="image">
+                <input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent($event)"/>
+            </div>
+            <div id="button">
+                <input type="submit" value="Cargar" [disabled]="!productForm.form.valid"/>
+            </div>
+        </div>
+    </form>
+</div>

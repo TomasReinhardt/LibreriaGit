@@ -1,0 +1,12 @@
+<div class="login">
+    <form id="formLogin" #formLogin="ngForm" (ngSubmit)="checkUser(formLogin)" *ngIf="!access">
+        <input type="email" name="email" #email="ngModel" [(ngModel)]="username.email" placeholder="Email" required/>
+        <input type="password" name="pass" #pass="ngModel" [(ngModel)]="username.password" placeholder="Contraseña" required/>
+        <input type="submit" value="Iniciar sesión"/>
+        <span *ngIf="errorC">Credenciales no validas</span>
+    </form>
+    <form id="formlogOut" #formlogOut="ngForm" (ngSubmit)="logOut()" *ngIf="access" >
+        <input type="submit" value="Cerrar sesión"/>
+    </form>
+    
+</div>

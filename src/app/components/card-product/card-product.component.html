@@ -1,0 +1,15 @@
+<div class="cardProduct">
+    <a [routerLink]="['/product',product._id]">
+        <div class="img">
+            <img src="{{product.image}}"  alt="{{product.name}}"/>
+        </div>
+        <div class="info">
+            <span>
+                <h3>{{product.name}}</h3>
+                <h5>{{product.category}}</h5>
+            </span>
+        </div>
+        <span class="agotado" *ngIf="product.stock == false">Agotado</span>
+        <span class="price" *ngIf="product.stock == true">${{product.price}}</span>
+    </a>
+</div>

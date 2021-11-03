@@ -1,0 +1,129 @@
+@media (max-width: 1000px){
+    .conteiner {
+        nav {
+            overflow: scroll;
+            overflow-x: hidden;
+            ul{
+                #boton-menu {
+                    display:  inline-block;
+                }
+                #menu-dezplegable{
+                    display: none;
+                    height: 100vh;
+                    li {
+                        width: 100%;
+                    }
+                    #menu-categorias {
+                        top: auto;
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width:900px){
+    .conteiner-Product {
+        .infoP {
+            width: 80%;
+            min-width: auto;
+            margin-bottom: 20px;
+            span {
+                div {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    input,textarea {
+                        width: 90%;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 840px){
+    .conteiner-trolley {
+        ul {
+            li {
+                flex-wrap: wrap;
+                justify-content: center;
+                .nameT {
+                    width: 100%;
+                }
+                .cantT,.priceT{
+                    width: 40%;
+                    border-bottom: 2px dashed plum;
+                    padding-bottom: 10px;
+                }
+            }
+            .auxT {
+                justify-content: center;
+                span {
+                    width: 50%;
+                }
+            }
+            .divisor {
+                display: none;
+            }
+        }
+        div {
+            input {
+                width: 90%;
+                margin: 0 auto;
+            }
+        }
+        #envio {
+            height: auto;
+            input {
+                width: 100%;
+                margin-top: 5px;
+            }
+            p {
+                text-align: center;
+            }
+        }
+    }
+}
+@media (max-width: 670px){
+    .conteiner-products {
+        .search {
+            flex-wrap: wrap;
+            height: 50px;
+            input {
+                margin: 0;
+                margin-bottom: 10px;
+            }
+            div {
+                width: 100%;
+            }
+        }
+    }
+    .conteiner-Product {
+        #productForm {
+            justify-content: center;
+            .info {
+                div {
+                    justify-content: center;
+                    label,input {
+                        width: 80%;
+                        text-align: center;
+                    }
+                }
+                #image {
+                    input {
+                        width: 80%;
+                    }
+                }
+                #button {
+                    input {
+                        width: 150px;
+                    }
+                }
+            }
+        }
+        .image {
+            width: 50%;
+            margin: 0px;
+        }
+    }
+}

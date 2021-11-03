@@ -1,0 +1,18 @@
+<div class="conteiner-products">
+    <h2>{{title}}</h2>
+    <div class="search">
+        <input type="text" placeholder="Buscar por nombre..." [(ngModel)]="nameSearchM"/>
+        <div>
+            <span>Odernar: </span>
+            <select [(ngModel)]="orden">
+                <option value="az" >A - Z</option>
+                <option value="za" >Z - A </option>
+                <option value="Mp" >Mayor precio</option>
+                <option value="mp" >Menor precio </option>
+            </select>
+        </div>
+    </div>
+    <ul class="listProducts">
+        <li class="product-item" *ngFor="let product of Products"> <card-product [product]="product" *ngIf="product.name.toLowerCase().includes(nameSearch)"></card-product> </li>
+    </ul>
+</div>

@@ -1,0 +1,23 @@
+<div class="conteiner-Product">
+    <div class="image">
+        <img src="{{product.image}}"  alt="{{product.name}}"/>
+    </div>
+    <div class="infoP">
+        <span>
+            <h3>{{product.name}}</h3>
+            <p>
+                Categoria: {{product.category}} <br>
+                Marca: {{product.marca}}<br>
+                Stock: {{stock}}<br>
+                Precio: ${{product.price}}
+            </p>
+            <div>
+                <label for="cant">Cantidad:</label>
+                <input type="number" name="cant" #cant="ngModel" [(ngModel)]="cantidad">
+            </div>
+        </span>
+        <a *ngIf="product.stock == true" (click)="addTrolley()">Añadir al carrito</a>
+        <a class="agotado" *ngIf="product.stock == false">Agotado</a>
+        <a [routerLink]="['/product',product._id,'edit']" *ngIf="access">Editar</a>
+    </div>
+</div>
