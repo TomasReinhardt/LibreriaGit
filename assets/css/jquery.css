@@ -1,0 +1,122 @@
+@media (max-width: 1000px) {
+  .conteiner nav {
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  .conteiner nav ul #boton-menu {
+    display: inline-block;
+  }
+  .conteiner nav ul #menu-dezplegable {
+    display: none;
+    height: 100vh;
+  }
+  .conteiner nav ul #menu-dezplegable li {
+    width: 100%;
+  }
+  .conteiner nav ul #menu-dezplegable #menu-categorias {
+    top: auto;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .conteiner-Product .infoP {
+    width: 80%;
+    min-width: auto;
+    margin-bottom: 20px;
+  }
+  .conteiner-Product .infoP span div {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .conteiner-Product .infoP span div input, .conteiner-Product .infoP span div textarea {
+    width: 90%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 840px) {
+  .conteiner-trolley ul li {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .conteiner-trolley ul li .nameT {
+    width: 100%;
+  }
+  .conteiner-trolley ul li .cantT, .conteiner-trolley ul li .priceT {
+    width: 40%;
+    border-bottom: 2px dashed plum;
+    padding-bottom: 10px;
+  }
+  .conteiner-trolley ul .auxT {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .conteiner-trolley ul .auxT span {
+    width: 50%;
+  }
+  .conteiner-trolley ul .divisor {
+    display: none;
+  }
+  .conteiner-trolley div input {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .conteiner-trolley #envio {
+    height: auto;
+  }
+  .conteiner-trolley #envio input {
+    width: 100%;
+    margin-top: 5px;
+  }
+  .conteiner-trolley #envio p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 670px) {
+  .conteiner-products .search {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    height: 50px;
+  }
+  .conteiner-products .search input {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .conteiner-products .search div {
+    width: 100%;
+  }
+  .conteiner-Product #productForm {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .conteiner-Product #productForm .info div {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .conteiner-Product #productForm .info div label, .conteiner-Product #productForm .info div input {
+    width: 80%;
+    text-align: center;
+  }
+  .conteiner-Product #productForm .info #image input {
+    width: 80%;
+  }
+  .conteiner-Product #productForm .info #button input {
+    width: 150px;
+  }
+  .conteiner-Product .image {
+    width: 50%;
+    margin: 0px;
+  }
+}
+/*# sourceMappingURL=jquery.css.map */
