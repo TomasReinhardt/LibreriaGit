@@ -19,16 +19,16 @@ export class authService {
     }
 
     loggedIn():boolean {
-        if (localStorage.getItem('token')) return true
+        if (sessionStorage.getItem('token')) return true
         else return false;
     }
 
     getToken() {
-        return localStorage.getItem('token');
+        return sessionStorage.getItem('token');
     }
 
     logOut() {
-        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         this._router.navigate(['products','all']);
     }
 

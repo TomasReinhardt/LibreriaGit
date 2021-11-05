@@ -9,7 +9,7 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'FunkoPopStore';
+  title = 'Libreria';
   public access: boolean = false
   public trolley: Array<Item> = [];
   constructor(
