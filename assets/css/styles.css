@@ -476,10 +476,21 @@ select {
   margin-top: 20px;
 }
 
-.conteiner-Product .infoP span .inputExten input {
-  width: 80%;
+.conteiner-Product .infoP span .inputExten ngx-dropzone {
+  height: 60px;
   margin: 0 auto;
-  text-align: center;
+  padding: 0 10px;
+  color: plum;
+  background-color: transparent;
+  border-color: plum;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.conteiner-Product .infoP span .inputExten ngx-dropzone ngx-dropzone-image-preview {
+  height: 60px !important;
+  min-height: auto !important;
+  overflow: hidden;
 }
 
 .conteiner-Product .infoP a {
@@ -569,9 +580,20 @@ select {
   color: plum;
 }
 
-.conteiner-Product #productForm .info #image input {
-  text-align: center;
-  width: 100%;
+.conteiner-Product #productForm .info #image ngx-dropzone {
+  height: 60px;
+  margin: 0 auto;
+  padding: 0 10px;
+  color: black;
+  border-color: rebeccapurple;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.conteiner-Product #productForm .info #image ngx-dropzone ngx-dropzone-image-preview {
+  height: 60px !important;
+  min-height: auto !important;
+  overflow: hidden;
 }
 
 .conteiner-Product #productForm .info #button {
