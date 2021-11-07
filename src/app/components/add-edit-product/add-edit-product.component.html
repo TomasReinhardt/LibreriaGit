@@ -1,5 +1,5 @@
 <div class="conteiner-Product">
-    <form id="productForm" #productForm="ngForm" (ngSubmit)="saveProduct(productForm)">
+    <form id="productForm" #productForm="ngForm" (ngSubmit)="uploadImage(productForm)">
         <div class="info">
             <div>
                 <label for="name">Nombre del Producto:</label>
@@ -40,7 +40,11 @@
                 <input type="text" name="description" #description="ngModel" [(ngModel)]="product.description" />
             </div>
             <div id="image">
-                <input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent($event)"/>
+                <ngx-dropzone (change)="onSelect($event)">
+                    <ngx-dropzone-label>Click o Arrastrar y soltar</ngx-dropzone-label>
+                    <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                    </ngx-dropzone-image-preview>
+                </ngx-dropzone>
             </div>
             <div id="button">
                 <input type="submit" value="Cargar" [disabled]="!productForm.form.valid"/>

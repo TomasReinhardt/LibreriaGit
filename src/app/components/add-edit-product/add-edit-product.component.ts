@@ -14,8 +14,8 @@ import { UploadService } from 'src/app/services/upload.service';
 })
 export class AddEditProductComponent implements OnInit {
   public product: Product = new Product('','','','',0,false,0,'','');
-  public filesToUpload: Array<File> = [];
   public url:string = Global.url;
+  files: File[] = [];
   
   constructor(
     private _productService: ProductService,
@@ -32,12 +32,12 @@ export class AddEditProductComponent implements OnInit {
       this._router.navigate(['products','all'])
     }
   }
-  saveProduct(form:any){
+
+  saveProduct(form:any, image:string){
+    this.product.image = image;
+
     this._productService.saveProduct(this.product).subscribe(
       response =>{
-        if(this.filesToUpload.length >= 1){
-          this._UploadService.makeFileRequest(Global.url+'product/upload-image/'+response.product._id,[],this.filesToUpload,'image')
-        }
         alert("Producto Cargado");
         form.reset();
       },
@@ -47,8 +47,42 @@ export class AddEditProductComponent implements OnInit {
     )
   }
 
-  fileChangeEvent(fileInput: any) {
-    this.filesToUpload = <Array<File>>fileInput.target.files;
+  uploadImage(form:any){
+    if(this.files.length >= 1){
+      const file_data = this.files[0];
+      const data = new FormData();
+      data.append('file', file_data);
+      data.append('upload_preset', 'libreria_cloudinary');
+      data.append('cloud_name', 'dvq0ezqjl');
+
+      this._UploadService.uploadImage(data).subscribe(
+        response => {
+          this.saveProduct(form,response.secure_url);
+        },
+        err => {
+          console.log(err);
+        }
+      )
+    }else {
+      this.saveProduct(form,'');
+    }
+  }
+
+  onSelect(event:any) {
+    this.files.push(...event.addedFiles);
+    if(this.files.length > 1){
+      this.files.splice(this.files.indexOf(event), 1);
+      alert ('No puede cargar mas de 1 archivo');
+    }
+    if (this.files[0].type != "image/jpeg" && this.files[0].type != "image/png" && this.files[0].type != "image/jpg"){
+      this.files.splice(this.files.indexOf(event), 1);
+      alert('Tipo de archivo no soportado')
+    }
+    
+  }
+
+  onRemove(event:any) {
+    this.files.splice(this.files.indexOf(event), 1);
   }
 
 }

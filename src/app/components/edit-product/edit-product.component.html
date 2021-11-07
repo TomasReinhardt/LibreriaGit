@@ -1,4 +1,4 @@
-<form id="editProduct" #editProduct="ngForm" class="conteiner-Product" (ngSubmit)="saveProduct(editProduct)">
+<form id="editProduct" #editProduct="ngForm" class="conteiner-Product" (ngSubmit)="uploadImage(editProduct)">
     <div class="image">
         <img src="{{product.image}}"  alt="{{product.name}}"/>
     </div>
@@ -11,7 +11,13 @@
             <div>Precio: <input type="number" name="price" #price="ngModel" [(ngModel)]="product.price"/></div>
             <div>Descuento: <input type="number" name="discount" #discount="ngModel" [(ngModel)]="product.discount"/></div>
             <div>Descripción: <textarea type="text" name="description" #description="ngModel" [(ngModel)]="product.description"></textarea></div>
-            <div class="inputExten"><input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent($event)"/></div>
+            <div class="inputExten">
+                <ngx-dropzone (change)="onSelect($event)">
+                <ngx-dropzone-label>Click o Arrastrar y soltar</ngx-dropzone-label>
+                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                </ngx-dropzone-image-preview>
+                </ngx-dropzone>
+            </div>
         </span>
         <a class="agotado delete" (click)="deleteProduct(product._id)">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

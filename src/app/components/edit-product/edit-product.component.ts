@@ -17,7 +17,7 @@ export class EditProductComponent implements OnInit {
   public url: string = Global.url;
   public cantidad:number = 0;
   public stock:string = "";
-  public filesToUpload: Array<File> = [];
+  files: File[] = [];
 
   constructor(
     public _productService: ProductService,
@@ -58,18 +58,38 @@ export class EditProductComponent implements OnInit {
     )
   }
 
-  saveProduct(form:any){
+  saveProduct(form:any, image:string){
+    this.product.image = image;
+
     this._productService.updateProduct(this.product).subscribe(
       response => {
-        if(this.filesToUpload.length >= 1){
-          this._UploadService.makeFileRequest(Global.url+'product/upload-image/'+response.product._id,[],this.filesToUpload,'image')
-        }
         this._router.navigate(['product',this.product._id])
       },
       err => {
         console.log(err);
       }
     )
+  }
+
+  uploadImage(form:any){
+    if(this.files.length >= 1){
+      const file_data = this.files[0];
+      const data = new FormData();
+      data.append('file', file_data);
+      data.append('upload_preset', 'libreria_cloudinary');
+      data.append('cloud_name', 'dvq0ezqjl');
+
+      this._UploadService.uploadImage(data).subscribe(
+        response => {
+          this.saveProduct(form,response.secure_url);
+        },
+        err => {
+          console.log(err);
+        }
+      )
+    }else {
+      this.saveProduct(form,this.product.image);
+    }
   }
 
   deleteProduct(id:string){
@@ -85,8 +105,19 @@ export class EditProductComponent implements OnInit {
     )
   }
 
-  fileChangeEvent(fileInput: any) {
-    this.filesToUpload = <Array<File>>fileInput.target.files;
+  onSelect(event:any) {
+    var filesAux = []
+    filesAux.push(...event.addedFiles);
+    if (filesAux[0].type != "image/jpeg" && filesAux[0].type != "image/png" && filesAux[0].type != "image/jpg"){
+      filesAux.splice(this.files.indexOf(event), 1);
+      alert('Tipo de archivo no soportado')
+    }else {
+      this.files = [];
+      this.files = filesAux;
+    }    
   }
 
+  onRemove(event:any) {
+    this.files.splice(this.files.indexOf(event), 1);
+  }
 }
