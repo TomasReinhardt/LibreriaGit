@@ -635,6 +635,16 @@ select {
   font-size: 40px;
 }
 
+.conteiner-Product #loading {
+  background-color: rebeccapurple;
+  color: plum;
+}
+
+#editProduct #loading {
+  background-color: plum;
+  color: rebeccapurple;
+}
+
 trolley {
   width: 80%;
 }
@@ -777,6 +787,14 @@ trolley {
 
 .conteiner-trolley #envio p {
   width: 100%;
+}
+
+#loading {
+  position: fixed;
+  padding: 40px;
+  border-radius: 20px;
+  opacity: 0.9;
+  z-index: 99;
 }
 
 input[type=number] {

@@ -18,6 +18,7 @@ export class EditProductComponent implements OnInit {
   public cantidad:number = 0;
   public stock:string = "";
   files: File[] = [];
+  public loading:boolean = false;
 
   constructor(
     public _productService: ProductService,
@@ -63,6 +64,7 @@ export class EditProductComponent implements OnInit {
 
     this._productService.updateProduct(this.product).subscribe(
       response => {
+        this.loading = false;
         this._router.navigate(['product',this.product._id])
       },
       err => {
@@ -72,6 +74,8 @@ export class EditProductComponent implements OnInit {
   }
 
   uploadImage(form:any){
+    this.loading = true;
+
     if(this.files.length >= 1){
       const file_data = this.files[0];
       const data = new FormData();
@@ -81,7 +85,8 @@ export class EditProductComponent implements OnInit {
 
       this._UploadService.uploadImage(data).subscribe(
         response => {
-          this.saveProduct(form,response.secure_url);
+          var aux = "https://res.cloudinary.com/dvq0ezqjl/image/upload/c_scale,h_640,w_640/v"+response.version+"/"+response.public_id+"."+response.format;
+          this.saveProduct(form,aux);
         },
         err => {
           console.log(err);

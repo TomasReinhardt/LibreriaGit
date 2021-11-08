@@ -15,8 +15,9 @@ import { UploadService } from 'src/app/services/upload.service';
 export class AddEditProductComponent implements OnInit {
   public product: Product = new Product('','','','',0,false,0,'','');
   public url:string = Global.url;
-  files: File[] = [];
-  
+  public files: File[] = [];
+  public loading:boolean = false;
+
   constructor(
     private _productService: ProductService,
     private _UploadService: UploadService,
@@ -38,8 +39,9 @@ export class AddEditProductComponent implements OnInit {
 
     this._productService.saveProduct(this.product).subscribe(
       response =>{
-        alert("Producto Cargado");
+        this.loading = false;
         form.reset();
+        this.files = [];
       },
       err => {
         console.log(err);
@@ -48,16 +50,18 @@ export class AddEditProductComponent implements OnInit {
   }
 
   uploadImage(form:any){
+    this.loading = true;
+
     if(this.files.length >= 1){
       const file_data = this.files[0];
       const data = new FormData();
       data.append('file', file_data);
       data.append('upload_preset', 'libreria_cloudinary');
       data.append('cloud_name', 'dvq0ezqjl');
-
       this._UploadService.uploadImage(data).subscribe(
         response => {
-          this.saveProduct(form,response.secure_url);
+          var aux = "https://res.cloudinary.com/dvq0ezqjl/image/upload/c_scale,h_640,w_640/v"+response.version+"/"+response.public_id+"."+response.format;
+          this.saveProduct(form,aux);
         },
         err => {
           console.log(err);
